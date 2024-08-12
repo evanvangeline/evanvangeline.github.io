@@ -1,0 +1,246 @@
+body {
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+#header {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  height: 100%;
+}
+
+.center-fit {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+}
+
+#text {
+  text-align: center;
+}
+
+#maintext {
+  color: #c2291b;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+#brokenheart {
+  display: block;
+  margin: 15px auto 10px;
+  width: 50%;
+}
+
+#back {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#gametitle {
+  margin-top: 0px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 0px;
+  background-color: #c2291b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  padding: 25px;
+  border-radius: 10px;
+  background: #F8F8F8;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards, .card, .view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards {
+  height: 400px;
+  width: 400px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cards .card {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  height: calc(100% / 4 - 10px);
+  width: calc(100% / 4 - 10px);
+}
+
+.card.shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+      transform: translateX(0);
+  }
+  20% {
+      transform: translateX(-13px);
+  }
+  40% {
+      transform: translateX(13px);
+  }
+  60% {
+      transform: translateX(-8px);
+  }
+  80% {
+      transform: translateX(8px);
+  }
+}
+
+.card .view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 7px;
+  background: #f7d3b8;
+  pointer-events: none;
+  backface-visibility: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.25s linear;
+}
+
+.card .back-view {
+  transform: rotateY(-180deg);
+}
+
+.card.flip .back-view {
+  transform: rotateY(0);
+}
+
+.card.flip .front-view {
+  transform: rotateY(180deg);
+}
+
+.cards .card .front-view img {
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: cover;
+}
+
+/* Ensure back images are smaller */
+.cards .card .back-view img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+      height: 168px;
+      width: 120px;
+  }
+  .card .front-view img {
+      width: 45px;
+  }
+  .card .back-view img {
+      max-width: 45px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .cards {
+      height: 168px;
+      width: 120px;
+  }
+  .card .front-view img {
+      width: 35px;
+  }
+  .card .back-view img {
+      max-width: 35px;
+  }
+}
+
+#products {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+#pictures {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#pictures img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the images adjust on smaller screens */
+@media screen and (max-width: 768px) {
+  #pictures {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #pictures {
+      grid-template-columns: 1fr;
+  }
+}
+
+.picture-container {
+  position: relative;
+  width: 100%;
+}
+
+.picture-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.overlay-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  pointer-events: none;
+}
+
+.picture-container:hover img {
+  transform: scale(1.05);
+}
+
+.picture-container:hover .overlay-text {
+  opacity: 1;
+}
